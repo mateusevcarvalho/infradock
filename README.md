@@ -19,5 +19,5 @@ Se alterar alguma configuração do apache rode apenas
 - docker-compose build nome-do-servico
 - docker-compose up -d nome-do-servico
 
-** Os nomes dos seviços são definidos dentro do docker-compose.yml que atualmente são: laravel, cakephp, mysql
+** Os nomes dos seviços são definidos dentro do docker-compose.yml que atualmente são: laravel, mysql
 

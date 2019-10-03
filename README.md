@@ -1,4 +1,4 @@
-# Ambiente de desenvolvimento docker da Seraph 
+# Ambiente docker 
 
 Seus projetos devem estar dentro da pasta www
 

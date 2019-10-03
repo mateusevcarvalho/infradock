@@ -1,0 +1,43 @@
+version: '3'
+services:
+
+  #Laravel
+  laravel:
+    build:
+      context: ./laravel
+      dockerfile: Dockerfile
+      args:
+        - PHP_VERSION_LARAVEL=${PHP_VERSION_LARAVEL}
+        - INSTALL_MONGO_LARAVEL=${INSTALL_MONGO_LARAVEL}
+        - INSTALL_XDEBUG_LARAVEL=${INSTALL_XDEBUG_LARAVEL}
+    image: mateuscarvalho/laravel
+    container_name: infradock_laravel
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./www:/var/www/html
+      - ./laravel/apache/000-default.conf /etc/apache2/sites-available/
+    ports:
+      - ${PORT_EXPOSE_LARAVEL}:80
+    working_dir: /var/www/html
+    networks:
+      - app-network
+
+  #Mysql
+  mysql:
+    image: mysql:${MYSQL_VERSION}
+    container_name: infradock_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge

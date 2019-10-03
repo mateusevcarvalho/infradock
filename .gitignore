@@ -1,0 +1,5 @@
+/www/**
+/mysql/**
+!/mysql/.txt
+!/www/index.php
+.env

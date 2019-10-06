@@ -74,10 +74,11 @@ RUN mkdir -p \
     && chmod -R 770 \
     tmp
 
-ADD ./apache/000-default.conf /etc/apache2/sites-available/
-
 # Enable Apache modules and restart
 RUN a2enmod rewrite \
     && service apache2 restart
+
+WORKDIR /etc/apache2/sites-enabled/
+RUN a2dissite 000-default.conf
 
 EXPOSE 80

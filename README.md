@@ -21,3 +21,10 @@ Se alterar alguma configuração do apache rode apenas
 
 ** Os nomes dos seviços são definidos dentro do docker-compose.yml que atualmente são: laravel, mysql
 
+
+** Abilitar configurações do apache
+
+- cd /etc/apache2/sites-available/
+- a2ensite *.conf
+- service apache2 reload
+

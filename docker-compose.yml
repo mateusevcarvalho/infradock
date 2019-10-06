@@ -16,7 +16,7 @@ services:
     tty: true
     volumes:
       - ./www:/var/www/html
-      - ./laravel/apache/000-default.conf /etc/apache2/sites-available/
+      - ./laravel/sites:/etc/apache2/sites-available
     ports:
       - ${PORT_EXPOSE_LARAVEL}:80
     working_dir: /var/www/html
